@@ -73,8 +73,8 @@ const FullLinkContainer = styled.div`
   color: ${colors['very-dark-blue']};
 
   @media ${desktop} {
-    flex-grow: 7;
     margin-right: 1.25rem;
+    flex-grow: 2;
   }
 `;
 
@@ -95,7 +95,7 @@ const ShortLinkContainer = styled.div`
     
   @media ${desktop} {
     text-align: right;
-    flex-grow: 3;
+    flex-shrink: 0;
   }
 `;
 
@@ -134,7 +134,8 @@ const CopyBtn = styled(Button)`
   }
 
   @media ${desktop} {
-    flex-basis: 5.5rem;
+    flex-shrink: 0;
+    width: 5.5rem;
     margin-left: 1.25rem;
   }
 `;
