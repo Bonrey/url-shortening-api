@@ -20,12 +20,13 @@ const Form = ({ onChange, onFocus, value, onClick, inputError, loading }) => {
             onFocus={onFocus}
             value={value}
             inputError={inputError}
+            aria-label="Shorten a link here"
           />
           <ErrorMessage inputError={inputError}>
             Please {inputError === 'empty' ? 'add a link' : 'enter a valid url'}
           </ErrorMessage>
           <ShortenBtn
-            type="button"
+            type="submit"
             onClick={onClick}
             inputError={inputError}
             disabled={loading}
