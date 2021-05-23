@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import { Button } from '../Other/Button';
 import imageWorking from '../../assets/images/illustration-working.svg';
@@ -8,10 +9,14 @@ import { desktop, large } from '../../styles/responsive';
 
 const Intro = () => {
   return (
-    <Container>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <Heading>More than just shorter links</Heading>
-      <Paragraph>Build your brand’s recognition and get detailed insights 
-  on how your links are performing.</Paragraph>
+      <Paragraph>Build your brand’s recognition and get detailed insights
+        on how your links are performing.</Paragraph>
       <GetStartedBtn>Get Started</GetStartedBtn>
     </Container>
   );
@@ -20,7 +25,7 @@ const Intro = () => {
 export default Intro;
 
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 86%;
   max-width: 30rem;
   margin: 0 auto;

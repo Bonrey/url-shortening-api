@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     if (initial) {
       localStorage.setItem('firstLaunch', false);
-      setTimeout(() => setScrollable(false), 5000);
+      setTimeout(() => setScrollable(false), 2000);
     }
   }, [initial]);
 

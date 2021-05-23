@@ -11,13 +11,13 @@ const InitialPopup = ({ onClick, isVisible }) => {
     <AnimatePresence>
       {isVisible && <Wrapper
         initial={{ opacity: 0 }}
-        transition={{ duration: 0.5, delay: 5 }}
+        transition={{ duration: 0.5, delay: 2 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 0.5, delay: 0 } }}
       >
         <Container
           initial={{ x: "-50%", y: 'calc(-100% - 3rem)' }}
-          transition={{ type: 'spring', duration: 1, delay: 5 }}
+          transition={{ type: 'spring', duration: 1, delay: 2 }}
           animate={{ y: 0 }}
           exit={{ scale: 0, transition: { duration: 0.5, delay: 0 } }}
         >
