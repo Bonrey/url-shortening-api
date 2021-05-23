@@ -45,15 +45,11 @@ const Container = styled(motion.div)`
   background-color: white;
   width: 86%;
   max-width: 30rem;
-  margin: 1rem auto 0;
+  margin: 0 auto;
   padding: 0 1rem 1rem;
   box-sizing: border-box;
   border-radius: 0.5rem;
   position: relative;
-
-  &:first-child {
-    margin-top: 1.5rem;
-  }
 
   @media ${desktop} {
     display: flex;

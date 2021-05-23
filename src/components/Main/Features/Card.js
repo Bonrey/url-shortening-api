@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import Zoom from 'react-reveal/Zoom';
+import Flip from 'react-reveal/Flip';
 
 import { colors } from '../../../styles/colors';
 import { desktop } from '../../../styles/responsive';
 
 
-const Card = ({ icon, heading, text, last }) => {
+const Card = ({ icon, heading, text, id }) => {
   return (
-    <Zoom>
-      <Container id="card">
-        <Icon src={icon} last={last} />
+    <Flip top>
+      <Container>
+        <Icon src={icon} last={id === 'card-2'} />
         <Heading>{heading}</Heading>
         <Text>{text}</Text>
       </Container>
-    </Zoom>
+    </Flip>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Card from './Card';
@@ -12,18 +12,21 @@ import { colors } from '../../../styles/colors';
 
 
 const Features = () => {
-  const scrollPos = useScrollPosition();
-
   return (
     <Wrapper>
       <Container>
         <Heading>Advanced Statistics</Heading>
         <Paragraph>Track how your links are performing across the web with our
           advanced statistics dashboard.</Paragraph>
-        <CardsContainer>
+        <CardsContainer id="cards-container">
           {data.map((el, i) => (
-            <CardWrapper key={i} scrollPos={scrollPos}>
-              <Card icon={el.icon} heading={el.heading} text={el.text} last={i === 2} />
+            <CardWrapper key={i}>
+              <Card
+                id={`card-${i}`}
+                icon={el.icon}
+                heading={el.heading}
+                text={el.text}
+              />
             </CardWrapper>
           ))}
         </CardsContainer>
@@ -34,22 +37,6 @@ const Features = () => {
 
 export default Features;
 
-
-function useScrollPosition() {
-  const [scrollY, setScrollY] = useState(window.scrollY);
-  useEffect(() => {
-    function handleScroll() {
-      setScrollY(window.scrollY);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return document.body.scrollHeight - scrollY;
-}
 
 const Wrapper = styled(FormWrapper)`
   padding: 5rem 0;
@@ -80,7 +67,7 @@ const CardsContainer = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  &:not(:last-child) #card::after {
+  &:not(:last-child) > div > div::after {
     content: "";
     display: block;
     width: 0.5rem;
@@ -89,37 +76,24 @@ const CardWrapper = styled.div`
     position: absolute;
     left: calc(50% - 0.25rem);
     bottom: -3rem;
-    transition: opacity 1s;
-  }
-
-  &:first-child #card::after {
-    opacity: ${({ scrollPos }) => scrollPos > 2000 && scrollPos < 2250 ? 1 : 0};
-  }
-
-  &:nth-child(2) #card::after {
-    opacity: ${({ scrollPos }) => scrollPos > 1650 && scrollPos < 1900 ? 1 : 0};
   }
 
   @media ${desktop} {
-    &:first-child #card::after {
+    &:first-child > div > div::after {
       width: 1.75rem;
       height: 0.5rem;
       left: 100%;
       top: 50%;
-      opacity: 0;
-      opacity: ${({ scrollPos }) => scrollPos > 1100 && scrollPos < 1400 ? 1 : 0};
     }
 
     &:nth-child(2) {
       padding-top: 2rem;
 
-      #card::after {
+      > div > div::after {
         width: 1.75rem;
         height: 0.5rem;
         left: 100%;
         top: calc(50% - 2rem);
-        opacity: 0;
-        opacity: ${({ scrollPos }) => scrollPos > 1100 && scrollPos < 1400 ? 1 : 0};
       }
     }
 

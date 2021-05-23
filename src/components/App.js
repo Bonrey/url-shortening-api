@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle scrollable={scrollable} menuVisible={menuVisible} />
-      <InitialPopup 
+      <InitialPopup
         onClick={() => {
           setInitialPopupVisible(false);
           setScrollable(true);

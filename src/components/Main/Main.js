@@ -122,4 +122,12 @@ const Container = styled.main`
 
 const ShortUrlsContainer = styled.div`
   background-color: ${colors['main-bg']};
+
+  > div:first-child {
+    margin-top: 1.5rem;
+  }
+
+  > div:not(:first-child) {
+    margin-top: 1rem;
+  }
 `;
