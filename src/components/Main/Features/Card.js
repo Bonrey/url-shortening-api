@@ -10,7 +10,7 @@ const Card = ({ icon, heading, text, id }) => {
   return (
     <Flip top>
       <Container>
-        <Icon src={icon} last={id === 'card-2'} />
+        <Icon icon={icon} last={id === 'card-2'} />
         <Heading>{heading}</Heading>
         <Text>{text}</Text>
       </Container>
@@ -50,7 +50,7 @@ const Icon = styled.span`
   width: 4.8rem;
   height: 4.8rem;
   top: -2.4rem;
-  background: ${colors['very-dark-blue']} ${({ src }) => `url(${src})`} no-repeat center;
+  background: ${colors['very-dark-blue']} ${({ icon }) => `url(${icon})`} no-repeat center;
   background-size: ${({ last }) => last ? "54%" : "45%"};
   border-radius: 50%;
   z-index: 1;
