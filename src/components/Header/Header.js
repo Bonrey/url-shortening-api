@@ -34,7 +34,7 @@ const Header = ({ onClick, menuVisible, width }) => {
           </Links>
           <Signup>
             <Login href="#root">Login</Login>
-            <SignupBtn type="button">Sign Up</SignupBtn>
+            <SignupBtn type="button" whileTap={{ scale: 0.96 }}>Sign Up</SignupBtn>
           </Signup>
         </>
       }
@@ -124,6 +124,11 @@ const CustomLink = styled(CustomPopupLink)`
   &:hover {
     color: ${colors['very-dark-blue']};
   }
+
+  &:focus {
+    color: ${colors['very-dark-blue']};
+    outline: 0.125rem dashed ${colors['very-dark-blue']};
+  }
 `;
 
 const Signup = styled(PopupSignup)`
@@ -134,6 +139,10 @@ const Signup = styled(PopupSignup)`
 const Login = styled(PopupLogin)`
   color: ${colors['grayish-violet']};
   margin-right: 1.5rem;
+
+  &:focus {
+    outline: 0.125rem dashed ${colors['grayish-violet']};
+  }
 `;
 
 const SignupBtn = styled(Button)`

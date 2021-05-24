@@ -17,7 +17,7 @@ const Intro = () => {
       <Heading>More than just shorter links</Heading>
       <Paragraph>Build your brand’s recognition and get detailed insights
         on how your links are performing.</Paragraph>
-      <GetStartedBtn>Get Started</GetStartedBtn>
+      <GetStartedBtn whileTap={{ scale: 0.96 }}>Get Started</GetStartedBtn>
     </Container>
   );
 }

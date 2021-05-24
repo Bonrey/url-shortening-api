@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Zoom from 'react-reveal/Zoom';
 
@@ -10,10 +10,15 @@ import { desktop, large } from '../../styles/responsive';
 
 
 const Form = ({ onChange, onFocus, value, onClick, inputError, loading }) => {
+  const [error, setError] = useState('');
+  useEffect(() => {
+    setTimeout(() => setError(inputError), (1 - !!inputError) * 400);
+  }, [inputError]);
+
   return (
     <Wrapper>
       <Zoom>
-        <Container onSubmit={e => e.preventDefault()}>
+        <Container onSubmit={e => e.preventDefault()} inputError={inputError}>
           <Input
             placeholder="Shorten a link here..."
             onChange={onChange}
@@ -23,7 +28,7 @@ const Form = ({ onChange, onFocus, value, onClick, inputError, loading }) => {
             aria-label="Shorten a link here"
           />
           <ErrorMessage inputError={inputError}>
-            Please {inputError === 'empty' ? 'add a link' : 'enter a valid url'}
+            Please {error === 'invalid' ? 'enter a valid url' : 'add a link'}
           </ErrorMessage>
           <ShortenBtn
             type="submit"
@@ -67,10 +72,13 @@ const Container = styled.form`
   padding: 1.5rem;
   box-sizing: border-box;
   border-radius: 0.5rem;
+  transition: height 0.4s;
+  height: ${({ inputError }) => inputError ? '10.05rem' : '8.925rem'};
 
   @media ${desktop} {
     width: 80%;
     max-width: 64rem;
+    height: auto;
     padding: 2.4rem;
     background: ${colors['dark-violet']} url(${bgShortenDesktop}) no-repeat top right;
     background-size: 100% 100%;
@@ -93,8 +101,10 @@ const Input = styled.input`
   border-radius: 0.25rem;
   font-size: 0.8rem;
   padding: 0 0.625rem;
+  transition: border-color 0.4s, color 0.4s;
 
   &::placeholder {
+    transition: color 0.4s;
     color: ${({ inputError }) => inputError ? colors.error : colors['grayish-violet']};
     opacity: 0.5;
   }
@@ -116,6 +126,7 @@ const ErrorMessage = styled.p`
   margin-left: 0.125rem;
   color: ${colors.error};
   opacity: ${({ inputError }) => inputError ? 1 : 0};
+  transition: opacity 0.4s;
 
   @media ${desktop} {
     font-size: 0.75rem;
@@ -125,13 +136,16 @@ const ErrorMessage = styled.p`
 const ShortenBtn = styled(Button)`
   width: 100%;
   height: 2.4rem;
-  margin-top: ${({ inputError }) => inputError ? '2.25rem' : '1.125rem'};
+  margin-top: 1.125rem;
+  transform: ${({ inputError }) => inputError ? 'translateY(1.125rem)' : 'translateY(0)'};
+  transition: transform 0.4s;
   border-radius: 0.25rem;
 
   @media ${desktop} {
     width: 17%;
-    margin-top: 0;
     margin-left: 3%;
+    margin-top: 0;
+    transform: none;
     height: 3rem;
     border-radius: 0.4rem;
   }

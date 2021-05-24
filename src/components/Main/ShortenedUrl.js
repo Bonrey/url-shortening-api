@@ -19,17 +19,17 @@ const ShortenedUrl = ({ onClick, fullLink, shortLink, copied, visible, width }) 
           transition={{ duration: 0.4 }}
         >
           <FullLinkContainer>
-            <FullLink href={fullLink} target='_blank' rel='noopener noreferrer'>
+            <FullLink tabIndex={-1} href={fullLink} target='_blank' rel='noopener noreferrer'>
               {fullLink}
             </FullLink>
           </FullLinkContainer>
           {width < 1024 && <Divider />}
           <ShortLinkContainer>
-            <ShortLink href={shortLink} target='_blank' rel='noopener noreferrer'>
+            <ShortLink tabIndex={-1} href={shortLink} target='_blank' rel='noopener noreferrer'>
               {shortLink}
             </ShortLink>
           </ShortLinkContainer>
-          <CopyBtn type="button" onClick={onClick} copied={copied}>
+          <CopyBtn type="button" onClick={onClick} copied={copied} disabled={copied}>
             {copied ? 'Copied!' : 'Copy'}
           </CopyBtn>
         </Container>

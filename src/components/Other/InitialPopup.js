@@ -23,7 +23,7 @@ const InitialPopup = ({ onClick, isVisible }) => {
         >
           <Header>
             <Heading>Welcome!</Heading>
-            <CloseBtn src={close} alt="close menu" onClick={onClick} />
+            <CloseBtn tabIndex={0} src={close} alt="close menu" onClick={onClick} />
           </Header>
           <Info>To remove all shortened urls, press <em>Esc</em> button. Also, note that the shortening process might take some time.</Info>
           <Attribution>
@@ -84,10 +84,10 @@ const CloseBtn = styled.img`
   height: 0.75rem;
   opacity: 0.75;
   transition: 0.3s;
+  cursor: pointer;
 
-  &:hover {
+  &:hover, &:focus {
     opacity: 1;
-    cursor: pointer;
   }
 `;
 
@@ -113,8 +113,9 @@ const Item = styled.p`
     opacity: 0.75;
     font-style: oblique;
     transition: opacity 300ms;
+    outline: none;
 
-    &:hover {
+    &:hover, &:focus {
       opacity: 1;
     }
   }

@@ -11,7 +11,6 @@ const linkNames = [
   ["Company", ["About", "Our Team", "Careers", "Contact"]]
 ];
 
-
 const Links = () => {
   return (
     <Container>
@@ -23,6 +22,7 @@ const Links = () => {
               key={i}
               href="#root"
               whileHover={{ color: "#2acfcf" }}
+              whileFocus={{ color: "#2acfcf" }}
               transition={{ duration: 0.3 }}
             >
               {link}
@@ -75,6 +75,7 @@ const CustomLink = styled(motion.a)`
   color: ${colors.gray};
   font-weight: 400;
   margin: 0.25rem 0;
+  outline: none;
 
   @media ${large} {
     margin: 0.375rem 0;

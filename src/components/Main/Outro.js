@@ -14,7 +14,7 @@ const Outro = () => {
     <Container>
       <Bounce>
         <Heading>Boost your links today</Heading>
-        <GetStartedBtn>Get Started</GetStartedBtn>
+        <GetStartedBtn whileTap={{ scale: 0.96 }}>Get Started</GetStartedBtn>
       </Bounce>
     </Container>
   );

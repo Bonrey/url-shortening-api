@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { colors } from '../../styles/colors';
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   border: none;
   outline: none;
   background-color: ${colors["button-bg"]};
@@ -12,5 +13,10 @@ export const Button = styled.button`
   &:hover:enabled {
     background-color: ${colors["button-hover"]};
     cursor: pointer;
+  }
+
+  &:focus-visible {
+    background-color: ${colors["button-hover"]};
+    outline: 0.125rem dashed ${colors["button-bg"]};
   }
 `;
